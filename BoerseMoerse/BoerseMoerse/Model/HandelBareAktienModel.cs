@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BoerseMoerse.Controller;
 
 namespace BoerseMoerse.Model
 {
-    class HandelBareAktienModel
+   public static class HandelBareAktienModel
     {
-        List<AktienModel>
+ 
     }
 }
