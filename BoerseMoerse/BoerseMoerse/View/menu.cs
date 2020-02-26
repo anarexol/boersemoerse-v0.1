@@ -11,13 +11,18 @@ namespace BoerseMoerse.View
 
         public static void LoginBenutzer()
         {
+            bool login;
             Console.WriteLine("Willkommen");
             Console.Write("Benutzername : ");
             string name = Console.ReadLine();
             Console.WriteLine("Passwort : ");
             string passwort = Console.ReadLine();
-            BoerseMoerse.Controller.BoersianerController.Login(name , passwort);
-
+            login =  BoerseMoerse.Controller.BoersianerController.Login(name , passwort);
+            if(login==true){
+            Console.WriteLine("Login erfolgreich!");}
+            if(login==false){
+            Console.WriteLine("Login fehlgeschlagen!");}
+            Console.ReadLine();
 
         }
     }

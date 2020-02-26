@@ -12,8 +12,8 @@ namespace BoerseMoerse.Model
         // Properties
 
         public int DepotID { get; set; }
-
-        public List<AktienModel, int> Aktie { get; set; }
+      //  public Dictionary<AktienModel, int> portfolio {get; set;}
+        public List<AktienModel> Aktien { get; set; }
 
 
         // Methoden

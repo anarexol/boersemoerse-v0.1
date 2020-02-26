@@ -22,15 +22,15 @@ namespace BoerseMoerse.Controller
         {
             boersianer.Konto.Kapital-=betrag;
         }
-        public static void aktieKaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
+        public static void aktieKaufen(BoersianerModel boersianer, AktienModel aktie)
         {            
-            boersianer.Konto.Depot.Add(aktie,menge);
-            boersianer.Konto.Kapital-=aktie.Wert*menge;
+            boersianer.Konto.Depot.Aktien.Add(aktie);
+            boersianer.Konto.Kapital-=aktie.Wert;
         }
-        public static void aktieVerkaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
+        public static void aktieVerkaufen(BoersianerModel boersianer, AktienModel aktie)
         {
-            boersianer.Konto.Depot.Delete(aktie,menge);
-            boersianer.Konto.Kapital+=aktie.Wert*menge;
+            boersianer.Konto.Depot.Aktien.Remove(aktie);
+            boersianer.Konto.Kapital+=aktie.Wert;
         }
 
         public static bool Login(string name, string passwort)

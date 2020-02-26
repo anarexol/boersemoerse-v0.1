@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BoerseMoerse.Model;
 
 namespace BoerseMoerse.Controller {
+
     static class AktuelleKursNotierung {
         static void AktieHinzufuegen() {
             new AktienModel() { Name = "Google", AktienID = 0001, Wert = 0 };
