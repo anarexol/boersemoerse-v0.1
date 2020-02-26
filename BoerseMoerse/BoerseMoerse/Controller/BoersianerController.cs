@@ -9,7 +9,23 @@ namespace BoerseMoerse.Controller
 {
     class BoersianerController
     {
-   
-        public KontoModel Konto { get; set; }
+        
+        public BoersianerModel Boersianer()
+        {
+            BoersianerController boersianer = new BoersianerController();
+            Console.WriteLine("Geben sie Ihren Benutzer Namen ein ");
+            boersianer.
+
+
+        }
+        public bool Login(string nutzerName, string passwort)
+        {
+            
+
+
+            
+        }
+
+
     }
 }

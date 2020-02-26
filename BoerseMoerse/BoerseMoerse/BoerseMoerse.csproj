@@ -48,6 +48,7 @@
     <Compile Include="Model\AktienModel.cs" />
     <Compile Include="Model\BoersianerModel.cs" />
     <Compile Include="Model\DepotModel.cs" />
+    <Compile Include="Model\HandelBareAktienModel.cs" />
     <Compile Include="Model\KontoModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
