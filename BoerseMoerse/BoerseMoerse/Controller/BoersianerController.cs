@@ -10,22 +10,22 @@ namespace BoerseMoerse.Controller
     class BoersianerController
     {
         
-        public BoersianerModel Boersianer()
+        public static void geldEinzahlen(BoersianerModel boersianer, decimal betrag)
         {
-            BoersianerController boersianer = new BoersianerController();
-            Console.WriteLine("Geben sie Ihren Benutzer Namen ein ");
-            boersianer.
-
-
+            boersianer.Konto.Kapital+=betrag;
         }
-        public bool Login(string nutzerName, string passwort)
+        public static void geldAbziehen(BoersianerModel boersianer, decimal betrag)
+        {
+            boersianer.Konto.Kapital-=betrag;
+        }
+        public static void aktieKaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
         {
             
-
-
-            
+            boersianer.Konto.Kapital-=aktie.Wert*menge;
         }
-
-
+        public static void aktieVerkaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
+        {
+            boersianer.Konto.Kapital+=aktie.Wert*menge;
+        }
     }
 }
