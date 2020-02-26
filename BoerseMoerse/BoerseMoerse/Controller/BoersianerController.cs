@@ -21,10 +21,12 @@ namespace BoerseMoerse.Controller
         public static void aktieKaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
         {
             
+            boersianer.Konto.Depot.Add(aktie,menge);
             boersianer.Konto.Kapital-=aktie.Wert*menge;
         }
         public static void aktieVerkaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
         {
+            boersianer.Konto.Depot.Delete(aktie,menge);
             boersianer.Konto.Kapital+=aktie.Wert*menge;
         }
     }
