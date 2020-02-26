@@ -19,8 +19,7 @@ namespace BoerseMoerse.Controller
             boersianer.Konto.Kapital-=betrag;
         }
         public static void aktieKaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
-        {
-            
+        {            
             boersianer.Konto.Depot.Add(aktie,menge);
             boersianer.Konto.Kapital-=aktie.Wert*menge;
         }
