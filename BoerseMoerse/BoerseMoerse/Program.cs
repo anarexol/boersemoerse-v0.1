@@ -30,9 +30,9 @@ namespace BoerseMoerse
             BoersianerController.list.Add(boersianer1);
             
             BoersianerController.list.Add(boersianer);
-            //menu.AuswahlMenü(menu.LoginBenutzer());
+            menu.AuswahlMenü(menu.LoginBenutzer());
 
-            menu.ShowAktienVerfuegbar();
+           // menu.ShowAktienVerfuegbar();
             Console.ReadLine();
 
 

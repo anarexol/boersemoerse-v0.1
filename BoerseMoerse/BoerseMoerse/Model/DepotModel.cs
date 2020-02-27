@@ -14,7 +14,7 @@ namespace BoerseMoerse.Model
 
         public int DepotID { get; set; }
 
-        public List<AktienModel> Portfolio { get; set; }     
+        public List<AktienModel> Portfolio { get; set; } = new List<AktienModel>();    
     
 
         // Methoden

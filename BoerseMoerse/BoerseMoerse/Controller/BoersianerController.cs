@@ -32,27 +32,35 @@ namespace BoerseMoerse.Controller
 
         public static void aktieKaufen(BoersianerModel boersianer, string suchbegriff, int menge)
         {
- 
+           
+            List<AktienModel> tempList = HandelBareAktienModel.AktienPool;
 
-            var numQuery =
-                from aktie in HandelBareAktienModel.AktienPool
-                where (aktie.AktienID.ToString() == suchbegriff) || (aktie.Name.Contains(suchbegriff))
-                select aktie;
+            var numQuery = tempList.Where(x=>x.AktienID == Convert.ToInt32(suchbegriff)).First();
+               
 
-                        
-                
-                ((AktienModel)numQuery).MengeImAktDepot = menge ;
+            ((AktienModel)numQuery).MengeImAktDepot = menge ;
+            Console.WriteLine(numQuery.Name);
+            boersianer.Depot.Portfolio.Add(numQuery);
 
-            boersianer.Depot.Portfolio.Add(( (AktienModel) numQuery));
-       
 
-            //boersianer.Konto.Kapital-= numQuery. aktie.Wert*menge;
+            boersianer.Konto.Kapital -= numQuery.Wert * menge;      
 
         }
-        /*public static void aktieVerkaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
+        public static void aktieVerkaufen(BoersianerModel boersianer,string suchbegriff, int menge)
         {
-            boersianer.Konto.Kapital+=aktie.Wert*menge; 
-        }*/
+            List<AktienModel> tempList = HandelBareAktienModel.AktienPool;
+
+            var numQuery = tempList.Where(x => x.AktienID == Convert.ToInt32(suchbegriff)).First();
+
+
+            ((AktienModel)numQuery).MengeImAktDepot = menge;
+            Console.WriteLine(numQuery.Name);
+            boersianer.Depot.Portfolio.Remove(numQuery);
+
+
+           
+            boersianer.Konto.Kapital +=numQuery.Wert*menge; 
+        }
 
         public static BoersianerModel Login(string name, string passwort)
         {
