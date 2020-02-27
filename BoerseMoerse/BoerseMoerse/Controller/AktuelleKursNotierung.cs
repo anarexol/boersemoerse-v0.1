@@ -10,7 +10,7 @@ namespace BoerseMoerse.Controller {
 
     static class AktuelleKursNotierung {
 
-        public Random rndm = new Random();
+        public static Random rndm = new Random();
 
         static void AktieHinzufuegen() {
             new AktienModel() { Name = "Google", AktienID = 0001, Wert = 0 };
