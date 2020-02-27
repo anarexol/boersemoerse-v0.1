@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BoerseMoerse;
-using BoerseMoerse.Controller;
+﻿using BoerseMoerse.Controller;
 using BoerseMoerse.Model;
+using System;
 
-    
+
 namespace BoerseMoerse.View
 {
     class menu
@@ -20,7 +15,7 @@ namespace BoerseMoerse.View
             string name = Console.ReadLine();
             Console.Write("Passwort : ");
             string passwort = Console.ReadLine();
-           return BoersianerController.Login(name , passwort);
+            return BoersianerController.Login(name, passwort);
         }
 
         public static void AuswahlMenü(BoersianerModel boersianer)
@@ -60,6 +55,8 @@ namespace BoerseMoerse.View
                                 BoersianerController.geldEinzahlen(boersianer, geld);
                                 Console.WriteLine("Neuer Kontostand : " + BoersianerController.geldAnzeigen(boersianer) + " Euro");
                                 Console.ReadLine();
+                                Console.Clear();
+
                                 break;
                             }
                         case 2:
@@ -69,6 +66,7 @@ namespace BoerseMoerse.View
                                 Console.WriteLine("Derzeitiger Kontostand :" + BoersianerController.geldAnzeigen(boersianer) + " Euro");
                                 BoersianerController.geldAbziehen(boersianer, geld);
                                 Console.ReadLine();
+                                Console.Clear();
                                 break;
                             }
                         case 3:
@@ -88,15 +86,15 @@ namespace BoerseMoerse.View
                             }
                         case 5:
                             {
-
-
+                                Console.WriteLine("Derzeitiger Kontostand : " + BoersianerController.geldAnzeigen(boersianer) + " Euro");
+                                Console.ReadLine();
+                                Console.Clear();
 
                                 break;
                             }
                         case 6:
                             {
-                                Console.WriteLine("Derzeitiger Kontostand : " + BoersianerController.geldAnzeigen(boersianer) + " Euro");
-                                Console.ReadLine();
+
 
 
                                 break;
@@ -106,12 +104,13 @@ namespace BoerseMoerse.View
                                 Console.WriteLine("Sie werden abgemeldet !");
                                 boersianer.Login = false;
                                 Console.ReadLine();
+                                Console.Clear(); 
                                 break;
                             }
                     }
 
                 }
-            } 
+            }
         }
     }
 }
