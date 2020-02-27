@@ -13,6 +13,7 @@ namespace BoerseMoerse
     {
         static void Main(string[] args)
         {
+           
             BoersianerModel boersianer = new BoersianerModel();
             boersianer.ID = 1;
             boersianer.Benutzername = "Fred";
@@ -23,10 +24,18 @@ namespace BoerseMoerse
             boersianer1.ID = 2;
             boersianer1.Benutzername = "Semi";
             boersianer1.Passwort = "dual";
+            //boersianer1.Depot.Portfolio.Add() {}
+            HandelBareAktienModel.AktienHinzufuegen();
+
             BoersianerController.list.Add(boersianer1);
             
             BoersianerController.list.Add(boersianer);
-            menu.AuswahlMenü(menu.LoginBenutzer());
+            //menu.AuswahlMenü(menu.LoginBenutzer());
+
+            menu.ShowAktienVerfuegbar();
+            Console.ReadLine();
+
+
 
         }
     }

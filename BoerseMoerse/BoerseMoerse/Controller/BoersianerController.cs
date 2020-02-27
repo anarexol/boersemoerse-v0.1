@@ -27,15 +27,32 @@ namespace BoerseMoerse.Controller
             return boersianer.Konto.Kapital;
         }
 
-        public static void aktieKaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
+        
+
+
+        public static void aktieKaufen(BoersianerModel boersianer, string suchbegriff, int menge)
         {
-            
-            boersianer.Konto.Kapital-=aktie.Wert*menge;
+ 
+
+            var numQuery =
+                from aktie in HandelBareAktienModel.AktienPool
+                where (aktie.AktienID.ToString() == suchbegriff) || (aktie.Name.Contains(suchbegriff))
+                select aktie;
+
+                        
+                
+                ((AktienModel)numQuery).MengeImAktDepot = menge ;
+
+            boersianer.Depot.Portfolio.Add(( (AktienModel) numQuery));
+       
+
+            //boersianer.Konto.Kapital-= numQuery. aktie.Wert*menge;
+
         }
-        public static void aktieVerkaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
+        /*public static void aktieVerkaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
         {
-            boersianer.Konto.Kapital+=aktie.Wert*menge;
-        }
+            boersianer.Konto.Kapital+=aktie.Wert*menge; 
+        }*/
 
         public static BoersianerModel Login(string name, string passwort)
         {

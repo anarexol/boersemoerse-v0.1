@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoerseMoerse.Model
 {
+
     class DepotModel
     {
 
@@ -13,8 +14,8 @@ namespace BoerseMoerse.Model
 
         public int DepotID { get; set; }
 
-        public List<AktienModel> Aktie { get; set; }
-
+        public List<AktienModel> Portfolio { get; set; }     
+    
 
         // Methoden
 

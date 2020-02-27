@@ -74,12 +74,21 @@ namespace BoerseMoerse.View
 
 
 
-                                break;
-                            }
-                        case 4:
-                            {
+                        break; 
+                    }
+                case 3:
+                    {
+                        Console.WriteLine("Welche Aktien möchten Sie kaufen");
+                        Console.WriteLine("Bitte zum Kauf AktienID oder Companyname angeben");
+                        Console.Write("AktienID oder Companyname? =>");
+                        string suche = Console.ReadLine();
+                        Console.WriteLine("Menge? =>");
+                        int menge = Convert.ToInt32(Console.ReadLine());
+                        BoersianerController.aktieKaufen(boersianer, suche, menge);
+                        break;
+                    }
 
-
+            }
 
 
                                 break;
@@ -112,5 +121,12 @@ namespace BoerseMoerse.View
                 }
             }
         }
+        }
+        
+            public static void ShowAktienVerfuegbar(){
+                Console.WriteLine("Momentan bieten wir folgende Aktien zum Kauf an:");
+                foreach (var item in HandelBareAktienModel.AktienPool)
+                    Console.WriteLine("Company: {0}, AktienID: {1}, Aktueller Kurs: {2} EUR",item.Name, item.AktienID, item.Wert);
+            }
     }
 }
