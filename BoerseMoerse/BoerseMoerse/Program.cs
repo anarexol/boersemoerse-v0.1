@@ -13,6 +13,8 @@ namespace BoerseMoerse
     {
         static void Main(string[] args)
         {
+            AktienModel aktie1 = new AktienModel(){AktienID=111,Name="Tesla",Wert=15};
+            AktienModel aktie2 = new AktienModel(){AktienID=112,Name="DeveloperDivision",Wert=150000};
             BoersianerModel boersianer = new BoersianerModel();
             boersianer.ID = 1;
             boersianer.Benutzername = "Fred";
@@ -20,6 +22,8 @@ namespace BoerseMoerse
             boersianer.Passwort = "koko";
             BoersianerController.list.Add(boersianer);
             BoerseMoerse.View.menu.LoginBenutzer();
+
+
         }
     }
 }

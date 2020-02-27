@@ -15,6 +15,7 @@ namespace BoerseMoerse.Model
         public string Name { get; set; }
         public decimal Wert { get; set; }
 
+        
         // Methoden 
     }
 }
