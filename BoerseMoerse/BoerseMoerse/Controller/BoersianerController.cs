@@ -22,6 +22,11 @@ namespace BoerseMoerse.Controller
         {
             boersianer.Konto.Kapital-=betrag;
         }
+
+        public static decimal geldAnzeigen(BoersianerModel boersianer){
+            return boersianer.Konto.Kapital;
+        }
+
         public static void aktieKaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
         {
             
