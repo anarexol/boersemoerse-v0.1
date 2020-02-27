@@ -32,21 +32,22 @@ namespace BoerseMoerse.Controller
             boersianer.Konto.Kapital+=aktie.Wert*menge;
         }
 
-        public static bool Login(string name, string passwort)
+        public static BoersianerModel Login(string name, string passwort)
         {
             foreach (var item in list)
             {
                 
                 if (name == item.Benutzername && passwort == item.Passwort)
-                {
+                { 
                     item.Login = true;
-                    return true;
+                    return item;
                    
                 }
                
             }
 
-            return false; 
+            BoersianerModel b = new BoersianerModel();
+            return b;
         
         }
     }

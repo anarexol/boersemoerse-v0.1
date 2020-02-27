@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BoerseMoerse.Model;
 using BoerseMoerse.Controller;
-using BoerseMoerse;
+using BoerseMoerse.View;
 
 namespace BoerseMoerse
 {
@@ -18,8 +18,14 @@ namespace BoerseMoerse
             boersianer.Benutzername = "Fred";
             boersianer.Nachname = "Korn";
             boersianer.Passwort = "koko";
+            BoersianerModel boersianer1 = new BoersianerModel();
+            boersianer1.ID = 2;
+            boersianer1.Benutzername = "Semi";
+            boersianer1.Passwort = "dual";
+            BoersianerController.list.Add(boersianer1);
             BoersianerController.list.Add(boersianer);
-            BoerseMoerse.View.menu.LoginBenutzer();
+            menu.AuswahlMenü(menu.LoginBenutzer());
+
         }
     }
 }
