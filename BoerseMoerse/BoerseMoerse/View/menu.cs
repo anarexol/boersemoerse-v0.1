@@ -1,6 +1,7 @@
 ﻿using BoerseMoerse.Controller;
 using BoerseMoerse.Model;
 using System;
+using System.Threading;
 
 
 namespace BoerseMoerse.View
@@ -13,7 +14,7 @@ namespace BoerseMoerse.View
             ConsoleKeyInfo key;
             string pass = string.Empty;
             Console.WriteLine("Willkommen");
-            Console.Write("Benutzername : ");
+            Console.Write("Benutzername: ");
             string name = Console.ReadLine();
             Console.Write("Passwort : ");
             
@@ -57,10 +58,11 @@ namespace BoerseMoerse.View
                                       "[2] Geld Auszahlen \n" +
                                       "[3] Aktie Kaufen \n" +
                                       "[4] Aktie Verkaufen\n" +
-                                      "[5] Konostand Anzeigen\n" +
+                                      "[5] Kontostand Anzeigen\n" +
                                       "[6] Depot einsehen\n" +
-                                      "[7] Abmelden ");
+                                      "[7] Abmelden \n");
 
+                    Console.Write("==> ");
                     auswahl = Convert.ToInt16(Console.ReadLine());
 
                     switch (auswahl)
@@ -91,13 +93,13 @@ namespace BoerseMoerse.View
                             }
 
                         case 3:
-                            {
+                            {   Console.WriteLine();
                                 Console.WriteLine("Welche Aktien möchten Sie kaufen");
                                 ShowAktienVerfuegbar();
-                                Console.WriteLine("Bitte zum Kauf AktienID oder Companyname angeben");
-                                Console.Write("AktienID oder Companyname? =>");
+                                Console.WriteLine();
+                                Console.Write("Bitte zum Kauf AktienID angeben ==> ");
                                 string suche = Console.ReadLine();
-                                Console.WriteLine("Menge? =>");
+                                Console.Write("Menge? ==> ");
                                 int menge = Convert.ToInt32(Console.ReadLine());
                                 BoersianerController.aktieKaufen(boersianer, suche, menge);
                                 Console.Clear();
@@ -150,7 +152,7 @@ namespace BoerseMoerse.View
 
         public static void ShowAktienVerfuegbar()
         {
-            Console.WriteLine("Momentan bieten wir folgende Aktien zum Kauf an:");
+            Console.WriteLine("Momentan bieten wir folgende Aktien zum Kauf an:\n");
             foreach (var item in HandelBareAktienModel.AktienPool)
                 Console.WriteLine("Company: {0}, AktienID: {1}, Aktueller Kurs: {2} EUR", item.Name, item.AktienID, item.Wert);
         }
@@ -158,12 +160,15 @@ namespace BoerseMoerse.View
 
         public static void ShowPortfolio(BoersianerModel boersianer)
         {
-            Console.WriteLine("Sie haben folgende Aktien zum Verkauf");
+            Console.WriteLine("Aktien im Depot:\n");
+            decimal temp = 0;
             foreach (var item in boersianer.Depot.Portfolio)
             {
-                Console.WriteLine("Company: {0}, AktienID: {1}, Aktueller Kurs: {2} EUR, Anazhl an Aktien:{3} ", item.Name, item.AktienID, item.Wert, item.MengeImAktDepot);
-            }
+                Console.WriteLine("Company: {0}, AktienID: {1}, Aktueller Kurs: {2} EUR, Anzahl:{3}, Gesamtwert: {4} ", item.Name, item.AktienID, item.Wert, item.MengeImAktDepot, item.Wert*item.MengeImAktDepot);
+                temp += item.Wert*item.MengeImAktDepot;
 
+            }
+            Console.WriteLine("\nGesamtwert Ihres Depots: {0} EUR", temp);
         }
     }
 
