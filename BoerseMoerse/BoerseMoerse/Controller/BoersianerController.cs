@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace BoerseMoerse.Controller
 {
@@ -70,7 +71,12 @@ namespace BoerseMoerse.Controller
                 if (name == item.Benutzername && passwort == item.Passwort)
                 { 
                     item.Login = true;
+                    Thread.Sleep(500);
+                    Console.WriteLine("Login erfolgreich");
+                    Thread.Sleep(1000);
+                    Console.Clear();
                     return item;
+
                    
                 }
                
