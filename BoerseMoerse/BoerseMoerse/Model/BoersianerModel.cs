@@ -19,6 +19,7 @@ namespace BoerseMoerse.Model
         public DepotModel Depot {get; set;} = new DepotModel();
         public bool Login { get; set; } = false;
         public string Passwort { get; set; }
+
         // Methoden
     }
 }

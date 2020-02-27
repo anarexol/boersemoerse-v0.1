@@ -10,11 +10,31 @@ namespace BoerseMoerse.View
 
         public static BoersianerModel LoginBenutzer()
         {
+            ConsoleKeyInfo key;
+            string pass = string.Empty;
             Console.WriteLine("Willkommen");
             Console.Write("Benutzername : ");
             string name = Console.ReadLine();
             Console.Write("Passwort : ");
-            string passwort = Console.ReadLine();
+            
+            do
+            {
+                key = Console.ReadKey(true);
+
+                
+                if (key.Key != ConsoleKey.Backspace)
+                {
+                   pass += key.KeyChar;
+                    Console.Write("*");
+                }
+                else
+                {
+                    Console.Write("\b");
+                }
+            }
+            while (key.Key != ConsoleKey.Enter);
+            Console.WriteLine();
+            string passwort = pass.Substring(0,pass.Length - 1) ;
             return BoersianerController.Login(name, passwort);
         }
 
