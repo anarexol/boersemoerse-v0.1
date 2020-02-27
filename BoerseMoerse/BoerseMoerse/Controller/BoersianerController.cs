@@ -22,6 +22,11 @@ namespace BoerseMoerse.Controller
         {
             boersianer.Konto.Kapital-=betrag;
         }
+
+        public static decimal geldAnzeigen(BoersianerModel boersianer){
+            return boersianer.Konto.Kapital;
+        }
+
         public static void aktieKaufen(BoersianerModel boersianer, AktienModel aktie, int menge)
         {            
             for (int i = 0; i < menge; i++)
@@ -37,21 +42,22 @@ namespace BoerseMoerse.Controller
             boersianer.Konto.Kapital+=aktie.Wert;
         }
 
-        public static bool Login(string name, string passwort)
+        public static BoersianerModel Login(string name, string passwort)
         {
             foreach (var item in list)
             {
                 
                 if (name == item.Benutzername && passwort == item.Passwort)
-                {
+                { 
                     item.Login = true;
-                    return true;
+                    return item;
                    
                 }
                
             }
 
-            return false; 
+            BoersianerModel b = new BoersianerModel();
+            return b;
         
         }
     }
