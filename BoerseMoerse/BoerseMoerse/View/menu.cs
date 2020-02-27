@@ -25,38 +25,55 @@ namespace BoerseMoerse.View
 
         public static void AuswahlMenü(BoersianerModel boersianer)
         {
-            int auswahl;
-            
-            Console.WriteLine("Was möchten sie tun?\n" +
-                              "[1] Geld Einzahlen \n" +
-                              "[2] Geld Auszahlen \n" +
-                              "[3] Aktie Kaufen \n" +
-                              "[4] Aktie Verkaufen\n" +
-                              "[5] Konostand Anzeigen\n" +
-                              "[6] Depot einsehen\n");
-            auswahl = Convert.ToInt16(Console.ReadLine());
-
-            switch (auswahl)
+            if (boersianer.Login == false)
             {
-
-                case 1 :
-                    {
-                        int geld = 0; 
-                        Console.WriteLine("Wie viel Geld möchten Sie einzaheln ? ");
-                        geld = Convert.ToInt32(Console.ReadLine());
-                        BoersianerController.geldEinzahlen( boersianer ,geld);
-                        break; 
-                    }
-                case 2:
-                    {
-
-
-
-                        break; 
-                    }
-
+                Console.WriteLine("Login Fehlgeschlagen ");
+                Console.ReadLine();
             }
+            else {
+                int auswahl;
 
+                Console.WriteLine("Was möchten sie tun?\n" +
+                                  "[1] Geld Einzahlen \n" +
+                                  "[2] Geld Auszahlen \n" +
+                                  "[3] Aktie Kaufen \n" +
+                                  "[4] Aktie Verkaufen\n" +
+                                  "[5] Konostand Anzeigen\n" +
+                                  "[6] Depot einsehen\n");
+                auswahl = Convert.ToInt16(Console.ReadLine());
+
+                switch (auswahl)
+                {
+
+                    case 1:
+                        {
+                            Console.WriteLine("Derzeitiger Kontostand : " + BoersianerController.geldAnzeigen(boersianer) + " Euro");
+                            int geld = 0;
+                            Console.WriteLine("Wie viel Geld möchten Sie einzaheln ? ");
+                            geld = Convert.ToInt32(Console.ReadLine());                           
+                            BoersianerController.geldEinzahlen(boersianer, geld);
+                            Console.WriteLine("Neuer Kontostand : " + BoersianerController.geldAnzeigen(boersianer) + " Euro");
+                            Console.ReadLine();
+                            break;
+                        }
+                    case 2:
+                        {
+                            int geld = 0;
+                            Console.WriteLine("Wie viel Geld möchten sie abheben? ");
+                            Console.WriteLine("Derzeitiger Kontostand :" + BoersianerController.geldAnzeigen(boersianer) + " Euro");
+                            BoersianerController.geldAbziehen(boersianer, geld);
+                            Console.ReadLine();
+                            break;
+                        }
+                    case 3:
+                        {
+
+
+
+                            break;
+                        }
+                }
+            }  
         }
     }
 }
