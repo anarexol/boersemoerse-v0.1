@@ -14,6 +14,7 @@ namespace BoerseMoerse.Model
         public int AktienID { get; set; }
         public string Name { get; set; }
         public decimal Wert { get; set; }
+        public int MengeImAktDepot {get; set;}
 
         // Methoden 
     }
