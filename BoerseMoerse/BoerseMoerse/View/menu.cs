@@ -13,11 +13,26 @@ namespace BoerseMoerse.View
         {
             ConsoleKeyInfo key;
             string pass = string.Empty;
+            Console.WriteLine("[0]Neuen Benutzer Anlegen");
+            Console.WriteLine("[1] Anmelden ");
+            int auswahl = Convert.ToInt16(Console.ReadLine());
+
+            switch (auswahl)
+            {
+
+                case 0:
+                    {                      
+                        BoersianerController.list.Add(BenutzerErstellen());
+                        break;
+                    }
+
+            }
+
             Console.WriteLine("Willkommen");
-            Console.Write("Benutzername: ");
+            Console.Write("Benutzername: ");    
             string name = Console.ReadLine();
             Console.Write("Passwort : ");
-            
+                 
             do
             {
                 key = Console.ReadKey(true);
@@ -54,6 +69,7 @@ namespace BoerseMoerse.View
 
 
                     Console.WriteLine("Was möchten sie tun?\n" +
+                                      "[0] Benutzer Verwalten\n"+
                                       "[1] Geld Einzahlen \n" +
                                       "[2] Geld Auszahlen \n" +
                                       "[3] Aktie Kaufen \n" +
@@ -67,6 +83,18 @@ namespace BoerseMoerse.View
 
                     switch (auswahl)
                     {
+
+
+                        case 0: 
+                            {
+                                BenutzerVerwalten(boersianer);
+
+
+
+
+                                break;
+                            }
+
 
                         case 1:
                             {
@@ -170,6 +198,80 @@ namespace BoerseMoerse.View
             }
             Console.WriteLine("\nGesamtwert Ihres Depots: {0} EUR", temp);
         }
+
+        public static BoersianerModel BenutzerErstellen()
+        {
+            BoersianerModel benutzer = new BoersianerModel(); 
+            Console.WriteLine("Wie lautet ihr Benutzer Name ?");
+            benutzer.Benutzername = Console.ReadLine();
+            Console.WriteLine("Geben sie ihr Passwort ein. ");
+            benutzer.Passwort = Console.ReadLine();
+
+            return benutzer; 
+        } 
+        public static void BenutzerVerwalten(BoersianerModel boersianer)
+        {
+            Console.WriteLine("Was wollen sie tun ?\n" +
+                              "[1] Benutzername ändern ?\n" +
+                              "[2] Passwort ändern ?\n" +
+                              "[3] Benutzer Löschen ?");
+            int auswahl = Convert.ToInt16(Console.ReadLine());
+            switch (auswahl)
+            {
+                case 1:
+                    {
+                        Console.WriteLine($"Alter Benutzername : {boersianer.Benutzername}");
+                        Console.Write("Bitte geben Sie ihren neuen Benutzernamen ein : ");
+                        boersianer.Benutzername = Console.ReadLine();
+                        Console.WriteLine($"Neuer Benutzername : {boersianer.Benutzername}");
+                        Console.ReadLine();
+                        Console.Clear();
+                        break; 
+                    }
+
+                case 2:
+                    {
+                        ConsoleKeyInfo key;
+                        string pass = string.Empty;
+                        Console.WriteLine($"Bitte geben sie ihr neues Passwort ein :");
+                        do
+                        {
+                            key = Console.ReadKey(true);
+
+
+                            if (key.Key != ConsoleKey.Backspace)
+                            {
+                                pass += key.KeyChar;
+                                Console.Write("*");
+                            }
+                            else
+                            {
+                                Console.Write("\b");
+                            }
+                        }
+                        while (key.Key != ConsoleKey.Enter);
+                        Console.WriteLine();
+                        string passwort = pass.Substring(0, pass.Length - 1);
+                        if (boersianer.Passwort != passwort)
+                        {
+                            boersianer.Passwort = passwort;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ihr neues Passwort entspricht ihrem alten Passwort");
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                        break;
+                    }
+            }
+
+
+
+
+
+        } 
     }
 
     
